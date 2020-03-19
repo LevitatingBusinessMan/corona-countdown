@@ -1,0 +1,82 @@
+<html>
+	<head>
+		<script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+		<style>
+			* {
+    			user-select: none;
+			}
+			body {
+				text-align: center;
+				font-family: monospace;
+			}
+			h1 {
+				font-size: 50px;
+			}
+			#time {
+				font-size: 57px;
+			}
+			span.indicator {
+				font-style: italic;
+			}
+			#content {
+				top: calc(50% - 140px);
+    			position: relative;
+			}
+			span.indicator {
+   				margin-left: -22px;
+			}
+
+			.particles-js-canvas-el {
+				position: absolute;
+				top: 0;
+				left: 0;
+			}
+		</style>
+	</head>
+	<body id="particles-js">
+		<div id="content">
+			<h1>Quarantine eindigt over:</h1>
+			<div id="time">
+				<span id="days"></span>
+				<span class="indicator">d</span>
+				<span id="hours"></span>
+				<span class="indicator">u</span>
+				<span id="minutes"></span>
+				<span class="indicator">m</span>
+				<span id="seconds"></span>
+				<span class="indicator">s</span>
+			</div>
+		</div>
+
+		<script>
+
+			particlesJS.load('particles-js', "particles.json")
+
+			//April 7
+			const endTime = new Date(2020, 3, 7).getTime()
+			
+			function calc() {
+				const currentTime = new Date().getTime()
+				const left = endTime - currentTime
+
+				const milsInDay = 24 * 60 * 60 * 1000
+				const milsInHour = 60 * 60 * 1000
+				const milsInMinute = 60 * 1000
+
+				const daysLeft = Math.floor(left / milsInDay).toString().padStart(2, "0")
+				const hoursLeft = Math.floor(left % milsInDay / milsInHour).toString().padStart(2, "0")
+				const minutesLeft = Math.floor(left % milsInHour / milsInMinute).toString().padStart(2, "0")
+				const secondsLeft = Math.floor(left % milsInMinute / 1000).toString().padStart(2, "0")
+
+				document.getElementById("days").innerHTML = daysLeft
+				document.getElementById("hours").innerHTML = hoursLeft
+				document.getElementById("minutes").innerHTML = minutesLeft
+				document.getElementById("seconds").innerHTML = secondsLeft
+			}
+
+			calc()
+			setInterval(calc, 1000)
+
+		</script>
+	</body>
+</html>
