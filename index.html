@@ -31,6 +31,21 @@
 				top: 0;
 				left: 0;
 			}
+
+			#author {
+				position: absolute;
+				bottom: 3%;
+				text-align: center;
+				width: 100%;
+				left: 0;
+				z-index: 2;
+			}
+
+			#author img {
+				margin-left: 3px;
+				position: relative;
+				bottom: -3px;
+			}
 		</style>
 	</head>
 	<body id="particles-js">
@@ -48,6 +63,14 @@
 			</div>
 		</div>
 
+		<span id="author">
+			Ontwikkeld door <br/>
+			Rein Fernhout
+			<a href="https://github.com/LevitatingBusinessMan" target="_blank">
+				<img src="/Github-Logo.png" width="20px"/>
+			</a>
+		</span>
+	
 		<script>
 
 			particlesJS.load('particles-js', "particles.json")
