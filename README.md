@@ -1,0 +1,1 @@
+A quick website I made in an hour to know how long I have to survive the quarantine in the netherlands
